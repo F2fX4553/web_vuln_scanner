@@ -1,0 +1,61 @@
+# Information Disclosure Patterns for Web Vulnerability Scanner
+# Sensitive Information Patterns
+password
+passwd
+pwd
+secret
+api[_\-]?key
+token
+credentials
+private_key
+secret_key
+auth
+authentication
+
+# Development Information
+todo
+fixme
+hack
+note to self
+debug
+remove this
+not for production
+test account
+test user
+
+# Server Information
+server path
+absolute path
+root directory
+internal path
+internal ip
+internal server
+internal hostname
+internal domain
+
+# Database Information
+database
+db_
+sql
+mysqli
+pdo
+connection string
+jdbc
+odbc
+
+# IP Address Pattern
+\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b
+
+# Email Address Pattern
+\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b
+
+# Version Information
+jquery[.-](\d+\.\d+\.\d+)
+bootstrap[.-](\d+\.\d+\.\d+)
+angular[.-](\d+\.\d+\.\d+)
+react[.-](\d+\.\d+\.\d+)
+vue[.-](\d+\.\d+\.\d+)
+wordpress[.-](\d+\.\d+\.\d+)
+php[.-](\d+\.\d+\.\d+)
+apache[.-](\d+\.\d+\.\d+)
+nginx[.-](\d+\.\d+\.\d+)

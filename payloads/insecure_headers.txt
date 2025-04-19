@@ -1,0 +1,27 @@
+# Insecure Headers Checks for Web Vulnerability Scanner
+# Security Headers to Check
+Content-Security-Policy
+X-Content-Type-Options
+X-Frame-Options
+X-XSS-Protection
+Strict-Transport-Security
+Referrer-Policy
+Permissions-Policy
+Cache-Control
+X-Permitted-Cross-Domain-Policies
+
+# Recommended Values
+# Content-Security-Policy: default-src 'self'; script-src 'self'
+# X-Content-Type-Options: nosniff
+# X-Frame-Options: DENY
+# X-XSS-Protection: 1; mode=block
+# Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+# Referrer-Policy: no-referrer-when-downgrade
+# Permissions-Policy: geolocation=(), microphone=(), camera=()
+# Cache-Control: no-store, max-age=0
+# X-Permitted-Cross-Domain-Policies: none
+
+# Cookie Flags to Check
+# Secure
+# HttpOnly
+# SameSite=Strict

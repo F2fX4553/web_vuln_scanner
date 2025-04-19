@@ -1,0 +1,64 @@
+# Web Vulnerability Scanner - Command Reference
+
+# Basic Usage
+python web_vuln_scanner.py -u https://example.com
+
+# Scan with all vulnerability types
+python web_vuln_scanner.py -u https://example.com -s all
+
+# Scan with crawling enabled (depth of 2)
+python web_vuln_scanner.py -u https://example.com -c -d 2
+
+# Scan with crawling enabled (depth of 3) and maximum 200 URLs
+python web_vuln_scanner.py -u https://example.com -c -d 3 -m 200
+
+# Scan only for specific vulnerabilities
+python web_vuln_scanner.py -u https://example.com -s xss sqli
+python web_vuln_scanner.py -u https://example.com -s csrf open_redirect
+python web_vuln_scanner.py -u https://example.com -s info_disclosure insecure_headers
+
+# Scan multiple URLs from a file
+python web_vuln_scanner.py -f urls.txt
+
+# Add rate limiting to avoid overwhelming the target
+python web_vuln_scanner.py -u https://example.com -r 1
+python web_vuln_scanner.py -u https://example.com -r 0.5
+
+# Enable verbose output for more detailed information
+python web_vuln_scanner.py -u https://example.com -v
+
+# Specify output format
+python web_vuln_scanner.py -u https://example.com -F json
+python web_vuln_scanner.py -u https://example.com -F html
+python web_vuln_scanner.py -u https://example.com -F all
+
+# Specify custom output directory
+python web_vuln_scanner.py -u https://example.com -o custom_reports
+
+# Specify custom log file
+python web_vuln_scanner.py -u https://example.com -l custom_logs/scan.log
+
+# Disable logging to file
+python web_vuln_scanner.py -u https://example.com -n
+
+# Set custom timeout for requests
+python web_vuln_scanner.py -u https://example.com -t 15
+
+# Set custom user agent
+python web_vuln_scanner.py -u https://example.com -a "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/91.0.4472.124"
+
+# Set cookies for authenticated scanning
+python web_vuln_scanner.py -u https://example.com -k "session=abc123" "auth=xyz789"
+
+# Crawl external domains (not just the target domain)
+python web_vuln_scanner.py -u https://example.com -c -e
+
+# Advanced usage examples
+# Full scan with crawling, rate limiting, and verbose output
+python web_vuln_scanner.py -u https://example.com -c -d 3 -m 150 -r 1 -v -s all
+
+# Targeted scan for XSS and SQL injection with custom timeout
+python web_vuln_scanner.py -u https://example.com -s xss sqli -t 20
+
+# Scan multiple sites with authentication and custom output
+python web_vuln_scanner.py -f sites.txt -k "session=abc123" -o client_reports -F all

